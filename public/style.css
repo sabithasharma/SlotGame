@@ -1,0 +1,42 @@
+html,
+body {
+    height: 100vh;
+    margin: 0px;
+    background-color: black;
+}
+
+#display {
+    width: 60%;
+    height: 50%;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#play img {
+    margin: 0 auto;
+    display: block;
+    cursor: pointer;
+}
+
+img.displayImage {
+    width: 18%;
+    float: left;
+}
+
+h1 {
+    /*color: white;*/
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+    color: #FFEB3B;
+}
+
+h2 {
+    display: block;
+    margin: 0;
+    text-align: center;
+    color: antiquewhite;
+}
