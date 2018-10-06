@@ -3,7 +3,8 @@ Slot Machine Game
 On click of start button slot machine is run and after sometime the result is dislayed.
 If images does not match there is  "No Win"
 If two images match there is "Small Win"
-If three images match there is "Big Win"
+If three images match there is "Big Win".
+Audio is played while playing the game.
 
 Running the application -
 run using the command "node server.js"
