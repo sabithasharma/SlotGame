@@ -1,13 +1,21 @@
-var socket = io.connect("/");
-var ASSET_PATH = './assets';
-var blankMsg = '-------------';
-document.getElementById('bonusMessage').innerHTML = blankMsg;
+/**
+ * @author - Sabitha Sharma L
+ * @description- This file is used for receiving messages from server using socket connection
+ */
+var socket;
+socket = io.connect("/");
+var slotDisplay = new SlotDisplay();
+var setResultOnUI = slotDisplay.setResultOnUI;
+var setWinMessage = slotDisplay.setWinMessage;
+var setBonus = slotDisplay.setBonus;
+var setSpin = slotDisplay.setSpin;
 socket.on("message", function (data) {
     data = JSON.parse(data);
     switch (data.type) {
         case "randomNumber":
             setResultOnUI(data.number);
-            setMessage(data.number);
+            setWinMessage(data.number, socket);
+        case "bonus":
             if (data.bonus) {
                 setBonus();
             }
@@ -15,13 +23,10 @@ socket.on("message", function (data) {
         default: break;
     }
 });
-
-document.getElementById("playButton").addEventListener('click', function () {
-    document.getElementById('bonusMessage').innerHTML = blankMsg;
-    var data = {
-        message: '',
-        type: 'randomNumber'
-    }
-    socket.send(JSON.stringify(data));
-});
+/**
+ * @description - Starts the game by listening of event of play button i.e click event
+ */
+function playGame () {
+    setSpin(socket);
+}
 

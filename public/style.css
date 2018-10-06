@@ -7,7 +7,7 @@ body {
 
 #display {
     width: 60%;
-    height: 50%;
+    height: 40%;
     margin: 0 auto;
     margin-bottom: 50px;
     display: flex;
@@ -22,7 +22,7 @@ body {
 }
 
 img.displayImage {
-    width: 18%;
+    width: 30%;
     float: left;
 }
 
@@ -39,4 +39,23 @@ h2 {
     margin: 0;
     text-align: center;
     color: antiquewhite;
+}
+
+@media only screen and (max-width: 500px) {
+    #display {
+        display: block !important;
+        width: 50% !important;
+    }
+    img.displayImage {
+        width: 100% !important;
+        float: left;
+    }
+    #third-image {
+        margin-bottom: 1em;
+    }
+    #playButton {
+        position: absolute;
+        bottom: 20px;
+        left: 36%;
+    }
 }

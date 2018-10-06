@@ -1,4 +1,8 @@
 var express = require('express');
+/**
+ * @Author - Sabitha Sharma L
+ * @description - node server with socket connection. Responds with random number for slot machine game
+ */
 var http = require('http');
 var io = require('socket.io');
 
@@ -23,11 +27,18 @@ io.sockets.on("connection", function (socket) {
         switch (data.type) {
             case "randomNumber": sendRandomNumber(socket);
                 break;
+            case "bonus": sendBonus(socket);
+                break;
         }
 
     });
 });
 
+/**
+ * @method - sendRandomNumber
+ * @param {*} socket 
+ * @description - send 3 randoms numbers in an array
+ */
 function sendRandomNumber(socket) {
     var number = [];
     var min = 0, max = 5;
@@ -37,8 +48,22 @@ function sendRandomNumber(socket) {
     var data = {
         type: "randomNumber",
         // number: Math.floor(Math.random() * 100000).toString().substring(0, 3)
-        number: number,
-        bonus: Math.random() >= 0.5
+        number: number
     }
     socket.send(JSON.stringify(data));
+    return number;
+}
+/**
+ * @method - sendBonus
+ * @param {*} socket 
+ * @description - send boolean value as a bonus
+ */
+function sendBonus(socket) {
+    var bonus = Math.random() >= 0.6;
+    var data = {
+        type: "bonus",
+        bonus: bonus
+    }
+    socket.send(JSON.stringify(data));
+    return bonus;
 }
