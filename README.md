@@ -9,10 +9,10 @@ Audio is played while playing the game.
 #Running the application -
 run using the command "node server.js"
 
-#Technolgies used
+#Technologies used
 HTML5, Javascript ES6, CSS3
 
-#Testig
+#Testing
 Unit testing done using Jasmine.
 Tested on Chrome Browser, Mozilla Firefox and Microsoft Edge
 Mobile devices - Lenovo K5, Samsung A5, Samsung S8 plus
