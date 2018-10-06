@@ -16,12 +16,12 @@ var server = http.createServer(app).listen(3000);
 io = io.listen(server);
 /*initializing the websockets communication , server instance has to be sent as the argument */
 
-io.sockets.on("connection", function (socket) {
+io.sockets.on("connection", (socket) => {
     /*Associating the callback function to be executed when client visits the page and 
       websocket connection is made */
     /*sending data to the client , this triggers a message event at the client side */
     console.log('Socket.io Connection with the client established');
-    socket.on("message", function (data) {
+    socket.on("message", (data) => {
         console.log(data.type);
         data = JSON.parse(data);
         switch (data.type) {
@@ -39,28 +39,28 @@ io.sockets.on("connection", function (socket) {
  * @param {*} socket 
  * @description - send 3 randoms numbers in an array
  */
-function sendRandomNumber(socket) {
-    var number = [];
-    var min = 0, max = 5;
+sendRandomNumber = (socket) => {
+    const number = [];
+    const min = 0, max = 5;
     for (var i = 0; i < 3; i++) {
         number.push(Math.floor(Math.random() * max) + min);
     }
-    var data = {
-        type: "randomNumber",
-        // number: Math.floor(Math.random() * 100000).toString().substring(0, 3)
+    const data = {
+        type: "randomNumber",        
         number: number
     }
     socket.send(JSON.stringify(data));
     return number;
 }
+// number: Math.floor(Math.random() * 100000).toString().substring(0, 3)
 /**
  * @method - sendBonus
  * @param {*} socket 
  * @description - send boolean value as a bonus
  */
-function sendBonus(socket) {
-    var bonus = Math.random() >= 0.6;
-    var data = {
+sendBonus = (socket) => {
+    const bonus = Math.random() >= 0.6;
+    const data = {
         type: "bonus",
         bonus: bonus
     }

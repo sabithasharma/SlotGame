@@ -33,14 +33,13 @@ describe("SlotDisplay", function () {
     var firstImage = document.createElement('first-image');
     var secondImage = document.createElement('second-image');
     var thirdImage = document.createElement('third-image');
-    var ASSET_PATH = './../../assets';
+    var ASSET_PATH = './../assets';
     var firstValue = jasmine.createSpy('firstImage').and.returnValue(`${ASSET_PATH}/Symbol_${4}.png`);
     var setResultOnUI = jasmine.createSpy('setResultOnUI');
 
     expect(setResultOnUI).toBeDefined();
     setResultOnUI([4, 5, 2]);
     expect(setResultOnUI).toHaveBeenCalled();
-    // expect(setResultOnUI()).toEqual(firstValue);
   });
 
   it("should be able to setBonus", function () {

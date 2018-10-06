@@ -7,8 +7,8 @@
  * SlotDisplay - Method for displaying UI
  */
 var SlotDisplay = function () {
-    var bonusMessage = 'Congrats You have a bonus !!!';
-    var ASSET_PATH = './assets';
+    const bonusMessage = 'Congrats You have a bonus !!!';
+    const ASSET_PATH = './assets';
     var blankMsg = '-------------';
     var playAudio = new Audio('./assets/spinner.wav');
     var spinSet = false;
@@ -95,7 +95,6 @@ var SlotDisplay = function () {
                 playAudio.currentTime = 0;
                 socket.send(JSON.stringify(data));
             }, 1000);
-            return number[0];
         }
     }
 

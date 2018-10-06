@@ -9,7 +9,7 @@ var setResultOnUI = slotDisplay.setResultOnUI;
 var setWinMessage = slotDisplay.setWinMessage;
 var setBonus = slotDisplay.setBonus;
 var setSpin = slotDisplay.setSpin;
-socket.on("message", function (data) {
+socket.on("message", (data) => {
     data = JSON.parse(data);
     switch (data.type) {
         case "randomNumber":
