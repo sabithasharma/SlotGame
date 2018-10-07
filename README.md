@@ -16,4 +16,4 @@ HTML5, Javascript ES6, CSS3
 Unit testing done using Jasmine.
 Tested on Chrome Browser, Mozilla Firefox and Microsoft Edge
 
-Mobile devices - Lenovo K5, Samsung A5, Samsung S8 plus
+Mobile devices - Lenovo K5, Samsung A5, Samsung S8 plus, iphoneX
