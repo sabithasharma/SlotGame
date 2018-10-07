@@ -9,9 +9,12 @@
 var SlotDisplay = function () {
     const bonusMessage = 'Congrats You have a bonus !!!';
     const ASSET_PATH = './assets';
-    var blankMsg = '-------------';
+    const blankMsg = '-------------';
     var playAudio = new Audio('./assets/spinner.wav');
     var spinSet = false;
+    const MAX_TIME_SPIN = 1000;
+    const MAX_IMAGE_DISPLAY_SPIN = 6;
+    const INTERVAL_NUM = 100;
     /**
      * @method setMessage - Set the message for Win
      * @param {*} number - receives the number from server
@@ -79,22 +82,22 @@ var SlotDisplay = function () {
             slotSpin = setInterval(function () {
                 spinSet = true;
                 var number = [];
-                var min = 0, max = 5;
-                for (var i = 0; i < 3; i++) {
+                var min = 0, max = MAX_IMAGE_DISPLAY_SPIN;
+                for (var i = 0; i < MAX_IMAGE_DISPLAY_SPIN; i++) {
                     number.push(Math.floor(Math.random() * max) + min);
                 }
                 var [first, second, third] = number;
                 firstImage.src = `${ASSET_PATH}/Symbol_${first}.png`;
                 secondImage.src = `${ASSET_PATH}/Symbol_${second}.png`;
                 thirdImage.src = `${ASSET_PATH}/Symbol_${third}.png`;
-            }, 100);
+            }, INTERVAL_NUM);
             setTimeout(() => {
                 clearInterval(slotSpin);
                 spinSet = false;
                 playAudio.pause();
                 playAudio.currentTime = 0;
                 socket.send(JSON.stringify(data));
-            }, 1000);
+            }, MAX_TIME_SPIN);
         }
     }
 

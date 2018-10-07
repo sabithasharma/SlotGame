@@ -2,25 +2,24 @@ describe("SlotDisplay", function () {
   beforeEach(function () {
     var dummyElement = document.createElement('bonusMessage');
     document.getElementById = jasmine.createSpy('bonusMessage').and.returnValue(dummyElement);
-    var playGame = jasmine.createSpyObj('playGame', ['playGame']);
-    playAudio = {
-      play: () => { }
-    }
-    spyOn(playAudio, 'play');
   });
 
   it("should be able to set spin", function () {
-    var setSpin = jasmine.createSpy('setSpin');
-    setSpin();
+    var setSpin = jasmine.createSpy('slotDisplay.setSpin');
+    var slotDisplay = {
+      setSpin: () => {}
+    }
+    var slotDisplay = new SlotDisplay();
+    spyOn(slotDisplay, "setSpin");
     expect(setSpin).toBeDefined();
+    slotDisplay.setSpin();
+    expect(slotDisplay.setSpin).toHaveBeenCalled();
   });
 
   it("should be able to setWinMessage", function () {
     var resultMessageElement = document.createElement('resultMessage');
     document.getElementById = jasmine.createSpy('resultMessage').and.returnValue(resultMessageElement);
-
     var setWinMessage = jasmine.createSpy('setWinMessage');
-
     expect(setWinMessage).toBeDefined();
     setWinMessage();
     expect(setWinMessage).toHaveBeenCalled();
@@ -30,13 +29,7 @@ describe("SlotDisplay", function () {
 
 
   it("should be able to setResultOnUI", function () {
-    var firstImage = document.createElement('first-image');
-    var secondImage = document.createElement('second-image');
-    var thirdImage = document.createElement('third-image');
-    var ASSET_PATH = './../assets';
-    var firstValue = jasmine.createSpy('firstImage').and.returnValue(`${ASSET_PATH}/Symbol_${4}.png`);
     var setResultOnUI = jasmine.createSpy('setResultOnUI');
-
     expect(setResultOnUI).toBeDefined();
     setResultOnUI([4, 5, 2]);
     expect(setResultOnUI).toHaveBeenCalled();

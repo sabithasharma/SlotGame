@@ -12,6 +12,9 @@ app.use(express.static('./public'));
 //Specifying the public folder of the server to make the html accesible using the static middleware
 
 var server = http.createServer(app).listen(3000);
+const BONUS_NUM = 0.6;
+const MAX_NUMBER =  6;
+const MAX_ARRAY_NUM = 3;
 //Server listens on the port 8124
 io = io.listen(server);
 /*initializing the websockets communication , server instance has to be sent as the argument */
@@ -41,8 +44,8 @@ io.sockets.on("connection", (socket) => {
  */
 sendRandomNumber = (socket) => {
     const number = [];
-    const min = 0, max = 5;
-    for (var i = 0; i < 3; i++) {
+    const min = 0, max = MAX_NUMBER;
+    for (var i = 0; i < MAX_ARRAY_NUM; i++) {
         number.push(Math.floor(Math.random() * max) + min);
     }
     const data = {
@@ -59,7 +62,7 @@ sendRandomNumber = (socket) => {
  * @description - send boolean value as a bonus
  */
 sendBonus = (socket) => {
-    const bonus = Math.random() >= 0.6;
+    const bonus = Math.random() >= BONUS_NUM;
     const data = {
         type: "bonus",
         bonus: bonus
