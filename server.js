@@ -13,7 +13,7 @@ app.use(express.static('./public'));
 
 var server = http.createServer(app).listen(3000);
 const BONUS_NUM = 0.6;
-const MAX_NUMBER =  6;
+const MAX_NUMBER =  5;
 const MAX_ARRAY_NUM = 3;
 //Server listens on the port 8124
 io = io.listen(server);
